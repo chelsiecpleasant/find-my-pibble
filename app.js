@@ -1,7 +1,7 @@
 console.log('JS loaded');
 
-const clientId = 'wjLG4VXM5xc43wMsWsynrTTMUqdKORUsIKCsgueulhyvfquCLN';
-const clientSecret = 'E7ILoZMFTSNamjiXRZJjJx0RyOqqKeBc4dTBN39g';
+const clientId = 'YOUR_CLIENT_ID';
+const clientSecret = 'YOUR_CLIENT_SECRET';
 
 async function getAccessToken() {
   try {
