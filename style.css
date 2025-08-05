@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background:
+    url('https://www.transparenttextures.com/patterns/cloudy-day.png'),
+    linear-gradient(to bottom, #aee2ff, #e0f7ff);
+  background-repeat: repeat;
+  background-size: auto;
+  background-blend-mode: overlay;
+  min-height: 100vh;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  padding: 1.5rem 1rem 0.5rem;
+  color: #004a80;
+  text-shadow: 1px 1px 2px white;
+}
+
+#dog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.dog-card {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.dog-card:hover {
+  transform: translateY(-5px);
+}
+
+.dog-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  object-fit: cover;
+}
+
+.dog-card h2 {
+  margin: 0.5rem 0 0.25rem;
+  color: #004a80;
+}
+
+.dog-card p {
+  margin: 0.25rem 0;
+}
+
+.dog-card a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  text-decoration: none;
+  background-color: #0077cc;
+  color: white;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.dog-card a:hover {
+  background-color: #005fa3;
+}
