@@ -70,3 +70,20 @@ h1 {
 .dog-card a:hover {
   background-color: #005fa3;
 }
+
+#interest-form {
+  position: relative;
+  bottom: 0;
+  margin: 3rem auto 2rem;
+  padding: 2rem;
+  max-width: 500px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+body {
+  min-height: 100vh;
+  padding-bottom: 6rem;
+}
