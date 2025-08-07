@@ -1,7 +1,7 @@
 console.log('JS loaded');
 
-const clientId = 'YOUR_API_KEY_HERE';
-const clientSecret = 'YOUR_API_SECRET_HERE';
+const clientId = 'wjLG4VXM5xc43wMsWsynrTTMUqdKORUsIKCsgueulhyvfquCLN';
+const clientSecret = 'E7ILoZMFTSNamjiXRZJjJx0RyOqqKeBc4dTBN39g';
 
 async function getAccessToken() {
   try {
@@ -18,7 +18,6 @@ async function getAccessToken() {
     if (!response.ok) {
       throw new Error(`Error fetching token: ${data.error}`);
     }
-
     return data.access_token;
   } catch (error) {
     console.error('Failed to get access token:', error);
