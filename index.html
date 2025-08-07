@@ -10,7 +10,7 @@
 <body>
   <h1>Find My Pibble</h1>
   <section id="bio">
-  <h2>Welcome to Find your Pibble — inspired by love, loyalty, and one unforgettable pitbull named Radar.</h2>
+  <h2>Welcome to Find My Pibble — inspired by love, loyalty, and one unforgettable pitbull named Radar.</h2>
     <p>I met Radar at a local shelter while visiting with my partner, who was looking to adopt a pitbull. We had no luck finding the right match—until I spotted Radar. He was terrified, curled up in his kennel, and barely moving. I pointed to him and said, “What about him?” My partner looked at me and asked, “Are you sure? That’s a pitbull.” I had no idea about the stigma surrounding pitbulls—I just saw an adorable, soulful dog who needed a chance.
 
 We took him for a walk, and it was like a switch flipped. Radar pranced, played, and stayed right next to my partner the entire time. We visited him a few more times before we could officially adopt, and every time we walked in, his whole face lit up with excitement.
@@ -19,9 +19,20 @@ The day we brought him home, something unexpected happened—he chose me. Though
 
 Radar’s love changed my life, and this website exists because of him. I want others to see past the unfair stigma and experience the loyalty, playfulness, and deep affection that pitbulls have to give. They deserve love. They deserve homes. And it starts with awareness. </p>
 </section>
-  <div id="dog-list"></div>
 
-  <script src="app.js"></script>
+<div id="dog-list"></div>
+
+  <section id="interest-form">
+  <h2>Interested in Adopting a Pitbull?</h2>
+  <form id="adopt-form">
+    <label for="email">Enter your email:</label><br />
+    <input type="email" id="email" required placeholder="you@example.com" />
+    <button type="submit">Submit</button>
+  </form>
+  <p id="form-message"></p>
+</section>
+
+<script src="app.js"></script>
 
 </body>
 </html>

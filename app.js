@@ -1,7 +1,7 @@
 console.log('JS loaded');
 
-const clientId = 'YOUR_CLIENT_ID';
-const clientSecret = 'YOUR_CLIENT_SECRET';
+const clientId = 'wjLG4VXM5xc43wMsWsynrTTMUqdKORUsIKCsgueulhyvfquCLN';
+const clientSecret = 'E7ILoZMFTSNamjiXRZJjJx0RyOqqKeBc4dTBN39g';
 
 async function getAccessToken() {
   try {
@@ -65,4 +65,15 @@ async function getPitbulls() {
 }
 
 getPitbulls();
+
+document.getElementById('adopt-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  document.getElementById('form-message').textContent = isValidEmail
+    ? '✅ Thanks! We’ll be in touch.'
+    : '❌ Please enter a valid email address.';
+});
+
 
