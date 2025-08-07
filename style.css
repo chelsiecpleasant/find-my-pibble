@@ -87,3 +87,14 @@ body {
   min-height: 100vh;
   padding-bottom: 6rem;
 }
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #666;
+  background-color: #f8f8f8;
+  font-size: 0.9rem;
+  margin-top: 4rem;
+  border-top: 1px solid #ccc;
+}
+
+
