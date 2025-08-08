@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Find My Pibble</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Find My Pibble</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="bio-section">
+      <h2>Why I Created Find My Pibble</h2>
+      <p>
+        I built Find My Pibble as part of my January 2025 Cohort Capstone. 
+        This project shows my skills along with my passion for a misunderstood breed finding a loving home.
+      </p>
+      <p>
+        The site connects to the Petfinder API to show adoptable pitbulls in real time.
+        It was built using HTML, CSS, and JavaScript, with a focus on responsive design.
+      </p>
+    </section>
+
+    <section id="dog-details">
+      <h2>Dog Selected From Home Page:</h2>
+      <div id="dog-info">Loading...</div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Find My Pibble — Built by Chelsie Pleasant</p>
+  </footer>
+
+  <script>
+    const clientId = 'wjLG4VXM5xc43wMsWsynrTTMUqdKORUsIKCsgueulhyvfquCLN';
+    const clientSecret = 'E7ILoZMFTSNamjiXRZJjJx0RyOqqKeBc4dTBN39g';
+
+    async function getAccessToken() {
+      const response = await fetch('https://api.petfinder.com/v2/oauth2/token', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `grant_type=client_credentials&client_id=${clientId}&client_secret=${clientSecret}`
+      });
+      const data = await response.json();
+      return data.access_token;
+    }
+
+    async function loadDogDetails() {
+      const dogId = localStorage.getItem('selectedDogId');
+      const dogInfoDiv = document.getElementById('dog-info');
+
+      if (!dogId) {
+        dogInfoDiv.textContent = 'No dog selected from the home page.';
+        return;
+      }
+
+      try {
+        const token = await getAccessToken();
+        const response = await fetch(`https://api.petfinder.com/v2/animals/${dogId}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await response.json();
+        const dog = data.animal;
+
+        dogInfoDiv.innerHTML = `
+          <img src="${dog.photos[0]?.medium || 'https://via.placeholder.com/300x200?text=No+Image'}" alt="${dog.name}">
+          <h3>${dog.name}</h3>
+          <p><strong>Breed:</strong> ${dog.breeds.primary}</p>
+          <p><strong>Location:</strong> ${dog.contact.address.city || ''}, ${dog.contact.address.state || ''}</p>
+          <p><strong>Description:</strong> ${dog.description || 'No description available.'}</p>
+          <a href="${dog.url}" target="_blank">View Full Profile</a>
+        `;
+      } catch (error) {
+        dogInfoDiv.textContent = 'Error loading dog details.';
+        console.error(error);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadDogDetails);
+  </script>
+</body>
+</html>

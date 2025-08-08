@@ -1,5 +1,7 @@
+
 console.log('JS loaded');
 
+-AI-assisted code, adapted by me-
 const clientId = '';
 const clientSecret = '';
 
@@ -23,7 +25,7 @@ async function getAccessToken() {
     console.error('Failed to get access token:', error);
   }
 }
-
+   -End of AI assisted Code-
 async function getPitbulls() {
   const token = await getAccessToken();
 
@@ -38,6 +40,7 @@ async function getPitbulls() {
     );
 
     const data = await response.json();
+    console.log('Pitbulls:', data.animals);
 
     const container = document.getElementById('dog-list');
     container.innerHTML = ''; 
@@ -47,13 +50,16 @@ async function getPitbulls() {
       card.classList.add('dog-card');
 
       const imageUrl = dog.photos[0]?.medium || 'https://via.placeholder.com/300x200?text=No+Image';
+      const city = dog.contact.address.city || 'Unknown City';
+      const state = dog.contact.address.state || 'Unknown State';
 
       card.innerHTML = `
         <img src="${imageUrl}" alt="${dog.name}" />
         <h2>${dog.name}</h2>
         <p>${dog.breeds.primary}</p>
-        <p>${dog.contact.city}, ${dog.contact.state}</p>
+        <p>${city}, ${state}</p>
         <a href="${dog.url}" target="_blank">View Profile</a>
+        <button onclick="viewDogDetails(${dog.id})">View Details</button>
       `;
 
       container.appendChild(card);
@@ -63,7 +69,10 @@ async function getPitbulls() {
   }
 }
 
-getPitbulls();
+function viewDogDetails(dogId) {
+  localStorage.setItem('selectedDogId', dogId);
+  window.location.href = 'about.html';
+}
 
 document.getElementById('adopt-form').addEventListener('submit', function (e) {
   e.preventDefault();
@@ -75,4 +84,4 @@ document.getElementById('adopt-form').addEventListener('submit', function (e) {
     : '❌ Please enter a valid email address.';
 });
 
-
+getPitbulls();
